@@ -1,0 +1,2 @@
+# RSVP-App
+This is a small side-project built using [*JavaScript*](https://www.javascript.com/) on [*TeamTreehouse's*](https://teamtreehouse.com/discover) [*DOM Scripting course*](https://teamtreehouse.com/library/dom-scripting-by-example). It features DOM element selection, traversal, manipulation, and event handling – the basic stuff to build any client-side web app. Feel free to check it out [*here*](https://tonydc1997.github.io/RSVP-App/).
