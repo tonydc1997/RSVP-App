@@ -58,6 +58,14 @@ ul.addEventListener('click', (e) => {
       input.value = span.textContent;
       li.insertBefore(input, span);
       li.removeChild(span);
+      button.textContent = 'save';
+    } else if (button.textContent === 'save') {
+      const input = li.firstElementChild;
+      const span = document.createElement('span');
+      span.textContent = input.value;
+      li.insertBefore(span, input);
+      li.removeChild(input);
+      button.textContent = 'edit';
     }
   }
 });
