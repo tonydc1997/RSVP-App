@@ -12,6 +12,7 @@ filterCheckbox.type = 'checkbox';
 div.appendChild(filterLabel);
 div.appendChild(filterCheckbox);
 mainDiv.insertBefore(div, ul);
+
 filterCheckbox.addEventListener('change', (e) => {
   const isChecked = e.target.checked;
   const lis = ul.children;
@@ -79,23 +80,31 @@ ul.addEventListener('click', (e) => {
     const button = e.target;
     const li = e.target.parentNode;
     const ul = li.parentNode;
-    if (button.textContent === 'remove') {
-      ul.removeChild(li);
-    } else if (button.textContent === 'edit') {
-      const span = li.firstElementChild;
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.value = span.textContent;
-      li.insertBefore(input, span);
-      li.removeChild(span);
-      button.textContent = 'save';
-    } else if (button.textContent === 'save') {
-      const input = li.firstElementChild;
-      const span = document.createElement('span');
-      span.textContent = input.value;
-      li.insertBefore(span, input);
-      li.removeChild(input);
-      button.textContent = 'edit';
+    const action = button.textContent;
+    const nameActions = {
+      remove: () => {
+        ul.removeChild(li);
+      }, 
+      edit: () => {
+        const span = li.firstElementChild;
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = span.textContent;
+        li.insertBefore(input, span);
+        li.removeChild(span);
+        button.textContent = 'save';
+      }, 
+      save: () => {
+        const input = li.firstElementChild;
+        const span = document.createElement('span');
+        span.textContent = input.value;
+        li.insertBefore(span, input);
+        li.removeChild(input);
+        button.textContent = 'edit';
+      }
     }
+
+    //  Select and run action in button's name
+    nameActions[action]();
   }
 });
